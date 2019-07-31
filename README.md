@@ -1,29 +1,15 @@
-# Express Boilerplate!
+# Big Mac Price Compare server
+    This server is used to grab data on big mac price data across the world.
 
-This is a boilerplate project used for starting new projects!
-
-Includes:
-    joi
-    knex
-    morgan
-    winston
-    xss
-    built for: [ mySQL | POSTGRES ] with pagination
-
-
-## Set up
-
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
 
 1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
 2. `cd` into the cloned repository
 3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
 4. Install the node dependencies `npm install`
 5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env` and to test `mv example.env .env.test .env.production`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
-7. Create your dev and test databases 
-8. Update the .env file with your database info
-9. Create migrations and run the seed file -- to run test migrations set NODE_ENV - `NODE_ENV=test npm run migrate`
+
+configure postgrator to use your postgres db
+
 
 ## Scripts
 
@@ -31,7 +17,7 @@ Start the application `npm start`
 
 Start nodemon for the application `npm run dev`
 
-Run the tests `npm test`
+Run the tests `npm t`
 
 ## Deploying
 
