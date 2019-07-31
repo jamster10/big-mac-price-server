@@ -22,6 +22,7 @@ module.exports = {
     USER: process.env.DB_USER,
     PASS: process.env.DB_NAME,
     DB_NAME: process.env.DB_NAME,
-    DB_PORT: process.env.DB_PORT
+    DB_PORT: process.env.DB_PORT,
+    DB_URL: process.env.DATABASE_URL || process.env.DB_URL
   }
 };

@@ -4,20 +4,18 @@ const { PORT, NODE_ENV, db } = require('./config');
 const knex = require('knex');
 const KnexQueryBuilder = require('knex/lib/query/builder');
 require('./util/paginate-knex')(KnexQueryBuilder); //add a function to paginate Knex
-const macService = require('../src/routes/route/mac-service');
+const macService = require('../src/routes/macs/mac-service');
 
 
 //create connection to mysql database
 const knexInstance = knex({
   client: 'pg',
-  connection: {
-    host : db.HOST,
-    user : db.USER,
-    password : db.PASS,
-    database : db.DB_NAME
-  }
+  connection: db.DB_URL
+  
 });
 // console.log(knexInstance)
+
+
 
 //attach country list array to app for easy use.
 macService.getAllCountries(knexInstance)

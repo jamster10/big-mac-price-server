@@ -23,6 +23,6 @@ module.exports = {
   'port': process.env.DB_PORT,
   'database': process.env.DB_NAME,
   'username': process.env.DB_USER,
-  'password': process.env.DB_PASS || '',
-  'ssl': process.env.NODE_ENV === 'production' ? true : false
+  'password': process.env.DB_PASSWORD || '',
+  'ssl': true
 };
