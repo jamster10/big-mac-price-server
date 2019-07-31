@@ -24,7 +24,7 @@ app.use('/mac', macRouter);
 
 //handle erroneous endpoints
 app.use('*', (req, res, next) => {
-  res.status(404).json({message: 'Resource not Found'});
+  return res.status(404).json({message: 'Resource not Found'});
 });
 
 //handle any internal errors
