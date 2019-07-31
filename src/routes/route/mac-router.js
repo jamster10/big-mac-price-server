@@ -15,8 +15,6 @@ macRouter
     const db = req.app.get('db')
     const countryIndex = countryArray.findIndex(countryName => countryName.toLowerCase() === country.toLowerCase());
 
-    country[0] = country[0].toUpperCase();
-
     if (countryIndex === -1) {
       return res.status(400).json({message: 'No data for given country'});
     }
@@ -25,14 +23,12 @@ macRouter
     
     try{
       //grab data from db and send it back
-      console.log(country)
-      const currentCountryData = await MacService.getCountryData(db, country);
-      console.log(currentCountryData)
-      const randomCountryData = await MacService.getCountryData(db, countryArray[randomCountryIndex]);
+      const currentCountry = await MacService.getCountryData(db, country);
+      const randomCountry = await MacService.getCountryData(db, countryArray[randomCountryIndex]);
 
       return res.status(200).json({
-        currentCountryData,
-        randomCountryData
+        currentCountry,
+        randomCountry
       });
     } catch (e){
         //if there is a problem, log it. Also let the user know theres an error.
