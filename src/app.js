@@ -8,7 +8,7 @@ const helmet = require('helmet');
 const { errorHandler } = require('./util/error_handling');
 const { cors_Settings } = require('./util/cors_settings');
 const { morgan_settings } = require('./util/logging-winston_morgan');
-const routeRouter = require ('./routes/route/mac-router');
+const macRouter = require ('./routes/route/mac-router');
 
 const app = require('express')();
 
@@ -17,8 +17,10 @@ app.use(morgan(morgan_settings));
 app.use(cors(cors_Settings));
 app.use(helmet());
 
+//grab Country data
+
 //set up route
-app.use('/route', routeRouter);
+app.use('/mac', macRouter);
 
 //handle erroneous endpoints
 app.use('*', (req, res, next) => {

@@ -1,5 +1,7 @@
 'use strict';
 
+require('dotenv').config();
+
 //seems useful for postgres
 const setDatabaseUrl = (env) => {
   if (env === 'production') {
@@ -11,13 +13,14 @@ const setDatabaseUrl = (env) => {
   }
 }; 
 
+
 module.exports = {
-  PORT: process.env.PORT || 8000,
+  PORT: process.env.PORT || 8080,
   NODE_ENV: process.env.NODE_ENV || 'development',
   db: {
     HOST: process.env.DB_HOST,
     USER: process.env.DB_USER,
-    PASS: process.env.DB_PASS,
+    PASS: process.env.DB_NAME,
     DB_NAME: process.env.DB_NAME,
     DB_PORT: process.env.DB_PORT
   }

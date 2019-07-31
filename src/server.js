@@ -4,10 +4,12 @@ const { PORT, NODE_ENV, db } = require('./config');
 const knex = require('knex');
 const KnexQueryBuilder = require('knex/lib/query/builder');
 require('./util/paginate-knex')(KnexQueryBuilder); //add a function to paginate Knex
+const macService = require('../src/routes/route/mac-service');
+
 
 //create connection to mysql database
 const knexInstance = knex({
-  client: 'mysql',
+  client: 'pg',
   connection: {
     host : db.HOST,
     user : db.USER,
@@ -15,6 +17,17 @@ const knexInstance = knex({
     database : db.DB_NAME
   }
 });
+// console.log(knexInstance)
+
+//attach country list array to app for easy use.
+macService.getAllCountries(knexInstance)
+  .then(countries =>{
+    app.set('countries', countries);
+  })
+  .catch(e => {
+    console.log(e);
+    throw new Error('Unable to create country data. Check DB settings');
+  });
 
 //attach db instance to global app
 app.set('db', knexInstance);
